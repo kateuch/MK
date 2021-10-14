@@ -1,31 +1,36 @@
 
+const img1 = 'http://reactmarathon-api.herokuapp.com/assets/scorpion.gif'
+const img2 = 'http://reactmarathon-api.herokuapp.com/assets/kitana.gif'
+const img3 = 'http://reactmarathon-api.herokuapp.com/assets/liukang.gif'
+const img4 = 'http://reactmarathon-api.herokuapp.com/assets/sonya.gif'
+const img5 = 'http://reactmarathon-api.herokuapp.com/assets/subzero.gif'
+
 const player1 = {
-    name: 'name1',
-    hp: 100,
-    img: 'http://reactmarathon-api.herokuapp.com/assets/liukang.gif',
+    name: 'Rubi',
+    hp: 50,
+    img: img1,
     weapon: ['weapon1', 'weapon2', 'weapon3'],
     attack: function( ){
-        console.log( player1.name + 'fight')
+        alert( this.name + 'fight')
     }
 };
 
 const player2 = {
-    name: 'name2',
-    hp: 100,
-    img: 'http://reactmarathon-api.herokuapp.com/assets/subzero.gif',
+    name: 'Bubi',
+    hp: 20,
+    img: img4,
     weapon: ['weapon1', 'weapon2', 'weapon3'],
     attack: function( ){
-        console.log( player2.name + 'fight')
+        alert( this.name + 'fight')
     }
 };
 
 // player1.attack();
 // player2.attack();
 
-function createPlayer(playerName, playerText){
+function createPlayer(playerNum, playerObj){
     const player1 = document.createElement('div');
-    player1.classList.add('player1');
-    player1.innerText = playerName;
+    player1.classList.add(playerNum);
 
     const progressbar = document.createElement('div');
     progressbar.classList.add('progressbar');
@@ -33,30 +38,30 @@ function createPlayer(playerName, playerText){
     const character = document.createElement('div');
     character.classList.add('character');
 
-    const live = document.createElement('div');
-    live.classList.add('live');
-    live.style.width = '100%';
+    const life = document.createElement('div');
+    life.classList.add('life');
+    life.style.width = playerObj.hp + '%';
 
-    const text = document.createElement('p');
-    text.innerText = playerText;
+
 
     const name = document.createElement('div');
+    name.innerText = playerObj.name
 
     const img = document.createElement('img');
-    img.src = playerName.img
+    img.src = playerObj.img
 
     const arena = document.querySelector('.arenas');
 
 
-    progressbar.appendChild(live);
+    progressbar.appendChild(life);
     progressbar.appendChild(name);
     player1.appendChild(progressbar);
     player1.appendChild(character);
     character.appendChild(img);
     name.classList.add('name');
-    name.appendChild(text);
+
     arena.appendChild(player1)
     }
 
-    createPlayer(player1, 'Bubi');
-    createPlayer(player2, 'Rubi');
+    createPlayer('player1', player1);
+    createPlayer('player2', player2);
